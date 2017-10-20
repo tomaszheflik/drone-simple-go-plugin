@@ -16,7 +16,7 @@ type Weather struct {
 
 func main() {
 	weter := Weather{}
-	// Get weter service url
+	// Get weather service url
 	fmt.Println("Get variables from os.envs")
 	weter.Url = os.Getenv("PLUGIN_URL")
 	if weter.Url == "" {
