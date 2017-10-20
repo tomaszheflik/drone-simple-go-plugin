@@ -8,14 +8,14 @@ import (
 	"io/ioutil"
 )
 
-type Weter struct {
+type Weather struct {
 	Url 		string
 	Api 		string
 	Location 	string
 }
 
 func main() {
-	weter := Weter{}
+	weter := Weather{}
 	// Get weter service url
 	fmt.Println("Get variables from os.envs")
 	weter.Url = os.Getenv("PLUGIN_URL")
@@ -35,9 +35,9 @@ func main() {
 	fmt.Printf("%+v", request)
 }
 
-func get_data(weter Weter) string {
+func get_data(weather Weather) string {
 	body := strings.NewReader("Plugin test\n")
-	url := fmt.Sprintf("%s%s?q=%s,uk&appid=b1b15e88fa797225412429c1c50c122a1", weter.Url, weter.Api, weter.Location)
+	url := fmt.Sprintf("%s%s?q=%s,uk&appid=b1b15e88fa797225412429c1c50c122a1", weather.Url, weather.Api, weather.Location)
 	req, err := http.NewRequest("GET", url, body)
 	if err != nil {
 		fmt.Printf("NewRequest Error %v \n", err)
