@@ -13,7 +13,7 @@ pipeline:
       - go get
       - go build -o weather-plugin
 
-publish:
+  publish:
     docker:
       username: $$DOCKER_USER
       password: $$DOCKER_PASSWORD
