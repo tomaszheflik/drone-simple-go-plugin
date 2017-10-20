@@ -12,16 +12,11 @@ pipeline:
     commands:
       - go get
       - go build -o weather-plugin
-  publish:
+
+publish:
     docker:
       username: $$DOCKER_USER
       password: $$DOCKER_PASSWORD
       repo: heflik/weather-plugin
       tag: latest
-  plugin:
-    name: Drone weather plugin
-    desc: Push weather data into your build log
-    type: notify
-    image: heflik/weather-plugin
-    labels:
-      - test1
+      file: Dockerfile
