@@ -17,6 +17,8 @@ pipeline:
 
   publish:
     image: plugins/docker
+    commands:
+      - env
     username: heflik
     password: tttrrr
     repo: heflik/weather-plugin
