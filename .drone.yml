@@ -9,7 +9,7 @@ pipeline:
       - GOOS=linux
       - GOARCH=amd64
       - CGO_ENABLED=0
-      - USER=${DOCKER_USER}
+      - USER=$${DOCKER_USER}
     commands:
       - go get
       - go build -o weather-plugin
@@ -19,8 +19,8 @@ pipeline:
   publish:
     image: plugins/docker
     environments:
-      - USER=${DOCKER_USER}
-      - PASS=${DOCKER_PASSWORD}
+      - USER=$${DOCKER_USER}
+      - PASS=$${DOCKER_PASSWORD}
     username: $USER
     password: $PASS
     repo: $USER/weather-plugin
