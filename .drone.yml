@@ -17,8 +17,8 @@ pipeline:
 
   publish:
     image: plugins/docker
-    username: $$DOCKER_USER
-    password: $$DOCKER_PASSWORD
-    repo: $$DOCKER_USER/weather-plugin
+    username: ${DOCKER_USER}
+    password: ${DOCKER_PASSWORD}
+    repo: ${DOCKER_USER}/weather-plugin
     tag: latest
     file: Dockerfile
