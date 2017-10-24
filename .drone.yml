@@ -13,7 +13,7 @@ pipeline:
       - go get
       - go build -o weather-plugin
       - echo $$DOCKER_USER heflik_test
-      - cat secrets.yml
+
 
   publish:
     image: plugins/docker
