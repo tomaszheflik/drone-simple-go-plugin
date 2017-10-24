@@ -15,9 +15,10 @@ pipeline:
       - echo $$DOCKER_USER
 
   publish:
-    image: plugins/docker
-    username: ${DOCKER_USER}
-    password: ${DOCKER_PASSWORD}
-    repo: ${DOCKER_USER}/weather-plugin
-    tag: latest
-    file: Dockerfile
+    docker:
+      image: plugins/docker
+      username: ${DOCKER_USER}
+      password: ${DOCKER_PASSWORD}
+      repo: ${DOCKER_USER}/weather-plugin
+      tag: latest
+      file: Dockerfile
