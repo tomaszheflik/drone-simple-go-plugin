@@ -15,9 +15,12 @@ pipeline:
       - echo ${DOCKER_USER} heflik_test
 
   publish:
+    environment:
+      - USER=$$DOCKER_USER
+      - PASS=$$DOCKER_PASSWORD
     image: plugins/docker
-    username: ${docker_username}
-    password: ${docker_password}
-    repo: ${docker_username}/weather-plugin
+    username: ${USER}
+    password: ${PASS}
+    repo: ${USER}/weather-plugin
     tag: latest
     file: Dockerfile
