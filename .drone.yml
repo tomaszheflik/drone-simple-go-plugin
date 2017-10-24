@@ -14,10 +14,9 @@ pipeline:
       - go build -o weather-plugin
 
   publish:
-    docker:
-      image: heflik/weather-plugin
-      username: $$DOCKER_USER
-      password: $$DOCKER_PASSWORD
-      repo: heflik/weather-plugin
-      tag: latest
-      file: Dockerfile
+    image: plugins/docker
+    username: $$DOCKER_USER
+    password: $$DOCKER_PASSWORD
+    repo: heflik/weather-plugin
+    tag: latest
+    file: Dockerfile
