@@ -12,6 +12,7 @@ pipeline:
     commands:
       - go get
       - go build -o weather-plugin
+      - env
       - echo $$DOCKER_USER heflik_test
 
   publish:
