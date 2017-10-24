@@ -9,18 +9,20 @@ pipeline:
       - GOOS=linux
       - GOARCH=amd64
       - CGO_ENABLED=0
+      - USER=$$DOCKER_USER
     commands:
       - go get
       - go build -o weather-plugin
       - env
-      - echo $$DOCKER_USER heflik_test
+      - echo $USER heflik_test
 
   publish:
     image: plugins/docker
-    commands:
-      - env
-    username: heflik
-    password: tttrrr
-    repo: heflik/weather-plugin
+    environments:
+      - USER=$$DOCKER_USER
+      - PASS=$$DOCKER_PASSWORD
+    username: $USER
+    password: $PASS
+    repo: $USER/weather-plugin
     tag: latest
     file: Dockerfile
