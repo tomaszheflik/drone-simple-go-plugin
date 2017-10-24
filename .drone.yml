@@ -14,6 +14,9 @@ pipeline:
       - go build -o weather-plugin
 
   docker:
+    environment:
+      - DOCKER_USER=${DOCKER_USER}
+      - DOCKER_PASSWORD=${DOCKER_PASSWORD}
     image: plugins/docker
     username: ${DOCKER_USER}
     password: ${DOCKER_PASSWORD}
