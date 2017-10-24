@@ -12,15 +12,13 @@ pipeline:
     commands:
       - go get
       - go build -o weather-plugin
-      - echo ${DOCKER_USER} heflik_test
+      - echo $$DOCKER_USER heflik_test
+      - cat secrets.yml
 
   publish:
-    environment:
-      - USER=$$DOCKER_USER
-      - PASS=$$DOCKER_PASSWORD
     image: plugins/docker
-    username: ${USER}
-    password: ${PASS}
-    repo: ${USER}/weather-plugin
+    username: $$DOCKER_USER
+    password: $$DOCKER_PASSWORD
+    repo: $$DOCKER_USER/weather-plugin
     tag: latest
     file: Dockerfile
