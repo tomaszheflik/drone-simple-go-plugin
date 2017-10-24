@@ -16,6 +16,7 @@ pipeline:
   docker:
     image: plugins/docker
     repo: heflik/weather-plugin
-    secrets: [docker_username, docker_password]
+    username: $$docker_username
+    password: $$docker_password
     tag: latest
     file: Dockerfile
