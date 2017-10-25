@@ -31,8 +31,14 @@ func main() {
 		weter.Location = "Katowice"
 	}
 	fmt.Printf("We got \nURL: %s \nAPI: %s \nLOCATION: %s\n", weter.Url, weter.Api, weter.Location)
+
+	// Get external data via API
 	request := get_data(weter)
 	fmt.Printf("%+v", request)
+
+	// Get internal data from workspace file
+	data_from_file := read_file(os.Getenv("PLUGIN_FILENAME"))
+	fmt.Printf("%s", data_from_file)
 }
 
 func get_data(weather Weather) string {
@@ -51,5 +57,14 @@ func get_data(weather Weather) string {
 	}
 	defer response.Body.Close()
 	data, err := ioutil.ReadAll(response.Body)
+	return string(data)
+}
+
+func read_file(file string) string {
+	data, err := ioutil.ReadFile(file)
+	if err != nil {
+		fmt.Printf("Open file error %s \n", err)
+		os.Exit(1)
+	}
 	return string(data)
 }
