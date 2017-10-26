@@ -34,11 +34,11 @@ func main() {
 
 	// Get external data via API
 	request := get_data(weter)
-	fmt.Printf("%+v", request)
+	fmt.Printf("%+v\n\n", request)
 
 	// Get internal data from workspace file
 	data_from_file := read_file(os.Getenv("PLUGIN_FILENAME"))
-	fmt.Printf("%s", data_from_file)
+	fmt.Printf("Data from file: %s\n", data_from_file)
 }
 
 func get_data(weather Weather) string {
